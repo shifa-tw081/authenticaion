@@ -3,6 +3,7 @@ import { Server } from "http";
 const express = require("express");
 
 import { Request, Response, NextFunction } from "express";
+import { dbConnection } from "./helpers/mongoosehelpers";
 
 const app = express();
 const logger = debug("app:*");
@@ -29,11 +30,6 @@ export async function startServer() {
 
     return next();
   });
-  //   app.get("/", async (req: Request, res: Response) => {
-  //     logger("hello");
-  //     console.log("object");
-  //     res.send("hello");
-  //   });
 }
 
 async function listen({ server }: { server: Server }): Promise<void> {
@@ -46,17 +42,5 @@ async function listen({ server }: { server: Server }): Promise<void> {
     });
   });
 }
-// console.log(logger, "logger");
-// async function listen({ server }: { server: Server }): Promise<void> {
-//     return new Promise((resolve) => {
-//       server.listen(PORT, async () => {
-//         logger(`Listening on port ${PORT}`);
 
-//         await initSeedData();
-
-//         await generateDbml();
-
-//         return resolve();
-//       });
-//     });
-//   }
+dbConnection;
