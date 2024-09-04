@@ -10,4 +10,3 @@ export const dbConnection = mongooseObj.createConnection(
 );
 dbConnection.on("open", () => console.log("connected to mongo"));
 dbConnection.on("error", (e) => console.log(`Primary database error. ${e}`));
-const logger = debug("app:connectToDbHelper");
